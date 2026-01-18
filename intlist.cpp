@@ -154,17 +154,20 @@ IntList& IntList::operator=(const IntList& source){
 
     Node* curr = source.head->next;
 
-    while (curr != nullptr) {
+
+    while (curr != nullptr){
         Node* newNode = new Node;
-        head->info = source.head->info;
-        head->next = nullptr;
-        tail = this->head;
+        newNode->info = curr->info;
+        newNode->next = nullptr;
 
-        Node* curr = source.head->next;
+        tail->next = newNode;
+        tail = tail->next;
 
+        curr = curr->next;
     }
-    return *this;   
+    return *this;
 }
+
 
 // constructor sets up empty list
 IntList::IntList(){ 
